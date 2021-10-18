@@ -12,7 +12,6 @@ public class Item {
     private int currentItemID = 9000;
 
     public Item(String title, double regularPrice, LocalDate releaseDate, int quantity) {
-
         this.title = title;
         this.regularPrice = regularPrice;
         this.releaseDate = releaseDate;
@@ -23,12 +22,9 @@ public class Item {
         }
         this.itemID = currentItemID;
         currentItemID += 100;
-
-
     }
 
     public Item(String title, double regularPrice, LocalDate releaseDate, int quantity, int itemID) {
-
         this.title = title;
         this.regularPrice = regularPrice;
         this.releaseDate = releaseDate;
@@ -38,107 +34,83 @@ public class Item {
             this.quantity = 100;
         }
         this.itemID = itemID;
-
-    }
-
-    public int getItemID() {
-
-        return this.itemID;
-
     }
 
     public String getTitle() {
-
-        return this.title;
-
-    }
-
-    public LocalDate getReleaseDate() {
-
-        return this.releaseDate;
-
+        return title;
     }
 
     public double getRegularPrice() {
+        return regularPrice;
+    }
 
-        return this.regularPrice;
-
+    public int getItemID() {
+        return itemID;
     }
 
     public double getDiscount() {
+        return discount;
+    }
 
-        return this.discount;
-
+    public LocalDate getReleaseDate() {
+        return releaseDate;
     }
 
     public int getQuantity() {
-
-        return this.quantity;
-
+        return quantity;
     }
 
     public double getPrice(LocalDate sellDate) {
-
         Period period = Period.between(releaseDate, sellDate);
         int difference = period.getYears();
         if(difference > 1) {
-            this.regularPrice -= this.regularPrice * 0.5 ;
-            this.regularPrice -= this.regularPrice * this.discount;
+            return regularPrice * 0.5 * (1 - discount);
         } else {
-            this.regularPrice -= this.regularPrice * this.discount;
+            return regularPrice * (1 - discount);
         }
-
-        return this.regularPrice;
-
-
     }
 
     public boolean setDiscount(double discount) {
-
-
-
+        if (discount > 0.5) {
+            return false;
+        } else {
+           this.discount = discount;
+           return true;
+        }
     }
 
     public double sell(int amount, LocalDate sellDate) {
-
-        if(sellDate.compareTo(this.releaseDate) < 0) {
+        if (sellDate.compareTo(releaseDate) < 0) {
             return 0;
         } 
-        if(amount > 0 && amount <= this.quantity) {
-
-            this.quantity -= 1;
-            return getPrice(sellDate);
-
+        if (amount > 0 && amount <= quantity) {
+            this.quantity -= amount;
+            return regularPrice * amount;
         } else {
-
             return 0;
-
         }
-        
-
     }
 
     public boolean addStock(int amount) {
-
-
-        if((this.quantity + amount) > 100) {
+        if((quantity + amount) > 100) {
             return false;
         } else {
-            this.quantity += amount;
+            quantity += amount;
             return true;
         }
-
     }
 
     @Override
     public String toString() {
-
-        return "Item " + this.itemID + " :\n" + "\tTitle: " + this.title + "\n" + "\tRegular Price: " + this.regularPrice + "\n" + "\tRelease Date: " + this.releaseDate + "\n" + "\tDiscount: " + this.discount + "\n" + "\tQuantity: " + this.quantity; 
-
+        return "Item " + itemID + " :\n" +
+                "\tTitle: " + title + "\n" +
+                "\tRegular Price: " + regularPrice + "\n" +
+                "\tRelease Date: " + releaseDate + "\n" +
+                "\tDiscount: " + discount + "\n" +
+                "\tQuantity: " + quantity;
     }
 
     public Item makeCopy() {
 
     }
-
 }
