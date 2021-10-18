@@ -21,14 +21,14 @@ public class Book extends Item {
 
     public ArrayList<String> getAuthors() {
 
-        return this.authors;
+        return authors;
 
     }
 
     @Override
     public String toString() {
 
-        return super.toString() + "\n\tAuthors: \n" + this.authors.toString().replace("[", "\t\t").replace(", ", "").replace("]", "\n"); 
+        return super.toString() + "\n\tAuthors: \n" + authors.toString().replace("[", "\t\t").replace(", ", "").replace("]", "\n"); 
 
     }
 
