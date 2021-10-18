@@ -15,7 +15,7 @@ public class Movie extends Item {
 
     public Movie(String title, double regularPrice, LocalDate releaseDate, int quantity, String director, String producer, int itemID) {
 
-        super(title, regularPrice, releaseDate, quantity);
+        super(title, regularPrice, releaseDate, quantity, itemID);
         this.director = director;
         this.producer = producer;
         
@@ -29,7 +29,11 @@ public class Movie extends Item {
     }
 
     @Override
-    public Item makeCopy() {
+    public Item makeCopy(Item item) {
+
+        Item copy = new Item(item.getTitle(), item.getRegularPrice(), item.getReleaseDate(), item.getQuantity(), item.getItemID());
+
+        return copy;
 
     }
 
