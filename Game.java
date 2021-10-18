@@ -15,7 +15,7 @@ public class Game extends Item {
 
     public Game(String title, double regularPrice, LocalDate releaseDate, int quantity, String studio, boolean discontinued, int itemID) {
 
-        super(title, regularPrice, releaseDate, quantity);
+        super(title, regularPrice, releaseDate, quantity, itemID);
         this.studio = studio;
         this.discontinued = discontinued;
         
@@ -57,7 +57,11 @@ public class Game extends Item {
     }
 
     @Override
-    public Item makeCopy() {
+    public Item makeCopy(Item item) {
+
+        Item copy = new Item(item.getTitle(), item.getRegularPrice(), item.getReleaseDate(), item.getQuantity(), item.getItemID());
+
+        return copy;
 
     }
 
