@@ -21,7 +21,7 @@ public class CompactDisk extends Item{
 
     public CompactDisk(String title, double regularPrice, LocalDate releaseDate, int quantity, String bandName, String recordLabel, int itemID) {
 
-        super(title, regularPrice, releaseDate, quantity);
+        super(title, regularPrice, releaseDate, quantity, itemID);
         this.bandName = bandName;
         this.recordLabel = recordLabel;
         
