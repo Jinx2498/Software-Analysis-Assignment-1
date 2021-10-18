@@ -110,7 +110,11 @@ public class Item {
                 "\tQuantity: " + quantity;
     }
 
-    public Item makeCopy() {
+    public Item makeCopy(Item item) {
+
+        Item copy = new Item(item.getTitle(), item.getRegularPrice(), item.getReleaseDate(), item.getQuantity(), item.getItemID());
+
+        return copy;
 
     }
 }
