@@ -33,7 +33,8 @@ public class Book extends Item {
     }
 
     @Override
-    public Book makeCopy() {
-        return new Book(getTitle(), getRegularPrice(), getReleaseDate(), getQuantity(), authors, getItemID());
+    public Item makeCopy() {
+        Item book = new Book(getTitle(), getRegularPrice(), getReleaseDate(), getQuantity(), authors, getItemID());
+        return book;
     }
 }
