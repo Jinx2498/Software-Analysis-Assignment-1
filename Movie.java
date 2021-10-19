@@ -25,7 +25,8 @@ public class Movie extends Item {
     }
 
     @Override
-    public Movie makeCopy() {
-        return new Movie(getTitle(), getRegularPrice(), getReleaseDate(), getQuantity(), director, producer, getItemID());
+    public Item makeCopy() {
+        Item movie = new Movie(getTitle(), getRegularPrice(), getReleaseDate(), getQuantity(), director, producer, getItemID());
+        return movie;
     }
 }
