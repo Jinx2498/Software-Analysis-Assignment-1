@@ -73,10 +73,9 @@ public class Item {
     public boolean setDiscount(double discount) {
         if (discount > 0.5) {
             return false;
-        } else {
-           this.discount = discount;
-           return true;
         }
+       this.discount = discount;
+       return true;
     }
 
     public double sell(int amount, LocalDate sellDate) {
