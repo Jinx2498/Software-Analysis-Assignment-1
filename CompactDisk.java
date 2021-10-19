@@ -27,8 +27,7 @@ public class CompactDisk extends Item{
     }
 
     @Override
-    public Item makeCopy(Item item) {
-        Item copy = new Item(item.getTitle(), item.getRegularPrice(), item.getReleaseDate(), item.getQuantity(), item.getItemID());
-        return copy;
+    public CompactDisk makeCopy() {
+        return new CompactDisk(getTitle(), getRegularPrice(),getReleaseDate(),getQuantity(), bandName, recordLabel, getItemID());
     }
 }

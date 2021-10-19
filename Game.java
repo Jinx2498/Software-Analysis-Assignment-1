@@ -43,7 +43,7 @@ public class Game extends Item {
     }
 
     @Override
-    public Item makeCopy() {
+    public Game makeCopy() {
         return new Game(getTitle(), getRegularPrice(), getReleaseDate(), getQuantity(), studio, discontinued, getItemID());
     }
 }
